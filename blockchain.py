@@ -8,8 +8,8 @@ import time
 class Block:
     def __init__(self, index, timestamp, data, previous_hash, level):
         """
-		Constructor
-		"""
+	Constructor
+	"""
         self.index = index
         self.timestamp = timestamp
         self.data = data
@@ -20,16 +20,16 @@ class Block:
 
     def hash_block(self, riddle):
         """
-		Returns the hash of a block
-		"""
+	Returns the hash of a block
+	"""
         sha = hasher.sha256()
         sha.update((riddle + str(self.nounce)).encode('utf-8'))
         return sha.hexdigest()
 
     def mine_block(self, level):
         """
-		Method to mine a block
-		"""
+	Method to mine a block
+	"""
         temp = ""
         while temp[0:level] != "0" * level:
             # incrementing the nonce value everytime the loop runs.
@@ -53,8 +53,8 @@ class Block:
 class BlockChain:
     def genesis_block(self):
         """
-		Generate genesis block. Manually construct a block with index zero and arbitrary previous hash.
-		"""
+	Generate genesis block. Manually construct a block with index zero and arbitrary previous hash.
+	"""
         return Block(0, date.datetime.now(), {"proof-of-work": 0, "contracts": None}, "2015A7PS0011H", self.level)
 
     def __init__(self):
